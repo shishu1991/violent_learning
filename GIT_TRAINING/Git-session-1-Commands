@@ -1,0 +1,49 @@
+  531  git clone https://github.com/shishu1991/learn-git.git
+  532  ls
+  533  cd learn-git/
+  534  git status
+  535  git branch -a
+  536  vi test_file.txt
+  537  git status
+  538  ls
+  539  git checkout -b "first_session"
+  540  git status
+  541  git add .
+  542  git status
+  543  clear
+  544  git branch -a
+  545  git commit -m "adds test file with few line"
+  546  git status
+  547  git pull origin first_session
+  548  git push origin first_session
+  568  git branch --help
+  570  git log
+  571  git log --oneline
+  572  git branch -a
+  573  git status
+  574  git status
+  575  ls
+  576  ls
+  577  clear
+  578  ls
+  579  vi test_file.txt 
+  580  git status
+  581  git add test_file.txt
+  582  git status
+  583  git commit -m "second commit for stages"
+  584  git status
+  585  git log
+  586  git log --online
+  587  git log --oneline
+  588  git pull origin first_session
+  589  git push origin first_session
+  590  git log --oneline
+  591  git checkout master
+  592  git pull origin master
+  593  git log --oneline
+  594  clear
+  595  git log --oneline
+  596  git branch -a
+  597  git log --oneline
+  598  git checkout first_session
+  599  git log --oneline
