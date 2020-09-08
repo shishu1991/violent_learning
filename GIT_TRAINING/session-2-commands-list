@@ -1,0 +1,175 @@
+       git checkout -b "merge-test"
+  766  git status
+  767  git add .
+  768  git commit -m "creates a file into base"
+  769  git hist
+  770  git checkout -b "merge-test-f1"
+  771  git checkout  "merge-test"
+  772  git checkout -b "merge-test-f2"
+  773  git branch -a
+  774  clear
+  775  git branch -a
+  776  git status
+  777  git add .
+  778  git commit -m "changes done by f2"
+  779  git checkout merge-test-f1
+  780  git status
+  781  git add .
+  782  git commit -m "changes done by f1"
+  783  clear
+  784  git checkout merge-test
+  785  git merge merge-test-f1
+  786  git merge merge-test-f2
+  787  git status
+  788  git add .
+  789  git status
+  790  git commit -m "merged the chnages and resolves conflicts"
+  791  git log --oneline
+  792  clear
+  793  git branch -a
+  794  git branch -D merge-test-f1
+  795  git branch -D merge-test-f2
+  796  git branch -a
+  797  clear
+  798  git checkout master
+  799  git checkout -b "reabse-test"
+  800  git status
+  801  git add .
+  802  git commit -m "rebase text file created"
+  803  git chekout -b "rebase-test-f1"
+  804  git checkout rebase-test
+  805  git checkout -b "rebase-test-f1"
+  806  git checkout rebase-test
+  807  git checkout -b "rebase-test-f2"
+  808  clear
+  809  git branch -a
+  810  git chekout reabse-test
+  811  git checkout reabse-test
+  812  git bracnh -D ebase-test-f2
+  813  git bracnh -D rebase-test-f2
+  814  git branch -D rebase-test-f2
+  815  git checkout -b "rebase-test-f2"
+  816  clear
+  817  git branch -a
+  818  git add .
+  819  git commit -m "changes by f2"
+  820  git checkout rebase-test-f1
+  821  git add .
+  822  git commit -m "changes by f1"
+  823  git checkout reabse-test
+  824  clear
+  825  git branch -a
+  826  git merge rebase-test-f1
+  827  git hist
+  828  git checkout rebase-test-f2
+  829  git hist
+  830  git rebase -i reabse-test
+  831  clear
+  832  git staus
+  833  git status
+  834  git add .
+  835  git status
+  836  git rebase --continue
+  837  clear
+  838  git hist
+  839  clear
+  840  git hist
+  841  clear
+  842  git checkout master
+  843  git checkout -b "test-other"
+  844  git add .
+  845  git commit -m "change 1"
+  846  git add .
+  847  git commit -m "change to be reverted"
+  848  git log --oneline
+  849  git revert 0c373bb
+  850  git status
+  851  git status
+  852  git hist
+  853  clear
+  854  git hist
+  855  git reset --soft 0c373bb
+  856  git status
+  857  git revert --abort
+  858  git status
+  859  git reset --soft 0c373bb
+  860  git status
+  861  git reset HEAD test.txt
+  862  git status
+  863  git checkout -- test.txt
+  864  git status
+  865  clear
+  866  git hist
+  867  git add .
+  868  git commit -m "revert tthe chnages"
+  869  git hist
+  870  git revert ccefaa8
+  871  git hist
+  872  git add .
+  873  git commit -m "hard chnages to be reverted"
+  874  git hits
+  875  clear
+  876  git hist
+  877  git reset --hard 0c373bb
+  878  git hist
+  879  clear
+  880  clear
+  881  git hist
+  882  git status
+  883  git stash save
+  884  git stash list
+  885  git stash save
+  886  git stash list
+  887  git stash apply 0
+  888  git stash apply 1
+  889  git status
+  890  git stash 
+  891  git stash
+  892  git stash list
+  893  git stash list
+  894  clear
+  895  git stash push -m "save my stash"
+  896  git list
+  897  git satsh list
+  898  git stash list
+  899  git stash pop 0
+  900  git satsh list
+  901  git stash list
+  902  clear
+  903  git stash clear
+  904  git stash list
+  905  git hist
+  906  git status
+  907  git checkout -- test.txt 
+  908  git status
+  909  git hist
+  910  clear
+  911  git add .
+  912  git commit -m "change 2"
+  913  git hist
+  914  git "format-patch" 0c373bb 81a8c1f
+  915  git checkout master
+  916  git checkout -b "patch_test"
+  917  git hist
+  918  git am 0004-change-1.patch
+  919  git am 0005-change-2.patch
+  920  git hist
+  921  clear
+  922* 
+  923  rm -rf 0003-second-commit-for-stages.patch 0004-change-1.patch 0005-change-2.patch 
+  924  git hits
+  925  git hist
+  926  git add .
+  927  git commit -m "changes 3"
+  928  git branch -1
+  929  git branch -a
+  930  git checkout test-other
+  931  clear
+  932  git hist
+  933  git branch -a
+  934  git checkout patch_test
+  935  git hist
+  936  git checkout test-other
+  937  giut cherry-pick b2c495a
+  938  git cherry-pick b2c495a
+  939  git hist
