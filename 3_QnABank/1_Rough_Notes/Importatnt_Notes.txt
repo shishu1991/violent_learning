@@ -1,0 +1,316 @@
+docker run -d -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" -e "OPENSEARCH_INITIAL_ADMIN_PASSWORD=<Some-pass>" -e "plugins.security.disabled=true" opensearchproject/opensearch:latest
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------Git-----------------------------------------------------------------------------------
+
+********************git branch -D $(git branch).Trim()    git fetch --all -Pp
+==================================================================================
+.\gradlew  clean bootjar -PactiveProfile='dev' -Pversion='1.0.0' -PartifactoryUserId='rhmbk94' -PartifactoryPassword='' -Pkeystorepassword='pass123'
+ java -jar  .\build\libs\schedule-service-1.0.0.jar --activeProfile="dev" --keystorePassword="" --serviceUnitCode="ut" --opensearchUsername="admin" --opensearchPassword="admin" --opensearchUri="http://localhost:9200"
+
+docker pull jfrog.deere.com/deere-docker/manufacturing/oee/qual/asset-service:24.13.0-test-build-promotion
+docker tag jfrog.deere.com/deere-docker/manufacturing/oee/qual/asset-service:24.13.0-test-build-promotion asset-service:qual
+
+docker run --name assetmanagement -e "JAVA_TOOL_OPTIONS= -DactiveProfile=k8s -DkeystorePassword=pass123 -DserviceUnitCode=lx -DopensearchUsername=admin -DopensearchPassword=admin -DopensearchUri=http://172.18.0.2:9200" -p 9011:9011 -it --net=local-network 01d63ee11fac
+
+docker run --name schedule-devl -e "JAVA_TOOL_OPTIONS=-DactiveProfile=dev -DkeystorePassword=pass123 -DserviceUnitCode=lx -DopensearchUsername=admin -DopensearchPassword=admin -DopensearchUri=http://172.18.0.2:9200" -p 9012:9012 -it --net=local-network 984aec7e2869f2910c3785e1704aa2985a6f4b342509dbfcae6bb929fa13f6a3  
+
+docker run --name batch-devl -e "JAVA_TOOL_OPTIONS=-DactiveProfile=dev -DkeystorePassword=pass123 -DoktaClientId= -DoktaClientSecret= -DdatasourceUsername= -DdatasourcePassword= -DedlPat= -DedlUnitCode= -DbatchUnitCode=lx -DopensearchUsername=admin -DopensearchPassword=admin -DopensearchUri=http://172.18.0.2:9200" -it --net=local-network   
+=====================================================================================
+Sonar 
+
+git show-ref <branch> // gives the head for each branch points 
+
+git fetch then merge and resolve conflict
+git fetch and then run rebase -i 
+
+---------------->when work in forks you can pull from upstream 
+git remote add upstream <url of the upstream repo from which you forked a repo into your account> // to add the 
+git pull upstream <branch> // to pull from upstream branch 
+git push <branch> // to push to your fork all the chnages from upstream and from your local
+
+-------------------------------------------------------------------Links-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+For webflux request body cosumtion: https://stackoverflow.com/questions/52870517/spring-reactive-get-body-jsonobject-using-serverrequest/52886199#52886199
+For transform method : https://www.logicbig.com/tutorials/misc/reactive-programming/reactor/transform-operation.html#:~:text=Class%20Mono&text=The%20advantage%20of%20using%20above,to%20reuse%20and%20mutualize%20code.
+
+
+------Issues
+net localgroup docker-users JDNET\<userid> /add
+
+
+
+
+
+--------------------------------------------------------kafka kraft in docker container
+3 steps 
+
+	1. generate the random uuid using kafka-storage.bat 
+		>> .\bin\windows\kafka-storage.bat random-uuid
+		>> KAFKA_CLUSTER_ID="$(/iota-app/kafka_2.12-3.5.1/bin/kafka-storage.sh random-uuid)"
+	2. format the log and provide the log path in kraft/server.properties for all brokes and controllers
+		>> .\bin\windows\kafka-storage.bat format -t j7Zymel_RViuhIT-82sI8w -c .\config\kraft\controller.properties
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c /iota-app/kafka_2.12-3.5.1/config/shared-config/kraft/controller.properties
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c /iota-app/kafka_2.12-3.5.1/config/shared-config/kraft/broker-1.properties
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-storage.sh format -t $KAFKA_CLUSTER_ID -c /iota-app/kafka_2.12-3.5.1/config/shared-config/kraft/broker-2.properties
+	3. Run the server from using the server.properties from config\kraft\server.properties start controller and broker
+		>> .\bin\windows\kafka-server-start.bat server.properties
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-server-start.sh -daemon /iota-app/kafka_2.12-3.5.1/config/shared-config/kraft/controller.properties
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-server-start.sh -daemon /iota-app/kafka_2.12-3.5.1/config/shared-config/kraft/controller.properties
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-server-start.sh -daemon /iota-app/kafka_2.12-3.5.1/config/shared-config/kraft/controller.properties
+		
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-topics.sh --create --topic first-topic --bootstrap-server localhost:9090 --partitions=2 --replication-factor=2
+		>> /iota-app/kafka_2.12-3.5.1/bin/kafka-topics.sh --topic first-topic --bootstrap-server localhost:9090 --describe
+		
+		>>  /iota-app/kafka_2.12-3.5.1/bin/kafka-console-producer.sh --topic first-topic --broker-list kafka-server:9090
+		>>  /iota-app/kafka_2.12-3.5.1/bin/kafka-console-consumer.sh --topic first-name --bootstrap-server localhost:9090 --from-beginning
+	4. To check kafka is running
+		>> jcmd | grep kafka 
+
+
+
+
+
+
+
+---------------------------------------------------------------Docker 
+>> docker build -t jabuntu-img:1.0.0.basic . 
+>> docker images -a
+>> docker volume create --name local-pocs --opt type=none --opt device=C:/Users/RHMBK94/My_World/Work/My_Learnings --opt o=bind
+>> docker run --name java-apis --volume local-pocs:/iota-app/. -d -it -p 9012:9090 jabuntu-img:1.0.0.basic
+>> docker run --name kafka-server --volume kafka-poc:/iota-app/kafka_2.12-3.5.1/config/. -d -it -p 9021:9080 -p 9022:9081  kafka-img:1.0.0.basic
+>> docker cp 'c:/path' <container>:/<path>/.
+>> docker run --name skillset-service -it --network skillset-network -p 4001:4001 skillset-service-img:0.0.1
+
+
+>> docker run --name opesearch-db-local -p 9200:9200 -e "discovery.type=single-node" -e "plugins.security.disabled=true" --net=skillset-network -dt opensearchproject/opensearch
+>> docker run --name opesearch-dashboard -p 5601:5601 -e "DISABLE_SECURITY_DASHBOARDS_PLUGIN=true" -e "opensearch.hosts=[http://opesearch-db-local:9200]"  --net=skillset-network -dt opensearchproject/opensearch-d
+>> docker run -d -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" -e "OPENSEARCH_INITIAL_ADMIN_PASSWORD=Somepaas@123" -e "plugins.security.disabled=true" opensearchproject/opensearch:latest
+ 
+ 
+
+>> docker build --build-arg JAR_FILE=build/libs/*.jar -t asset-management-img .
+
+
+
+// Gradle Commands
+
+.\gradlew  clean bootjar -PactiveProfile=dev -Pversion='2.0.1'
+
+
+
+
+Dashboards
+
+Networks
+>> docker network create  --driver=bridge kafka-network
+>> docker netwrok connect <network> <container>
+
+
+Volumes
+docker volume create --name my_test_volume --opt type=none --opt device=/home/jinna/Jinna_Balu/Test_volume --opt o=bind
+// docker volume create --name local-pocs --opt type=none --opt device=C:/Users/RHMBK94/My_World/Work/My_Learnings --opt o=bind
+// docker volume 
+local-pocs -- C:\Users\RHMBK94\My_World\Work\My_Learnings
+kafka-poc -- C:\Users\RHMBK94\My_World\Work\DCL_IOTA\Team-Repos\mdo-event-service\Docker_Custom_Images\Volumes\kafka-poc
+
+
+
+
+Image		 			|  Container(S)  | Machine Port | Container Port | Description 														 	| Remarks
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+local-ubuntu 			| ubuntu-machine | None		 	|	None		 | This is for ubuntu instance to verify linux commands and other things|  Down (up it when required) cretaed from ubuntu:latest using dockerfile on 4-10-2023
+jabuntu-img:1.0.0.basic | java-apis		 | 9012         | 9090           | This runs webfluxservice (reactitve Spring app) to do poc            |  Down
+kafka-img:1.0.0.basic   | kafka-server   | 9020, 9021   | 9080, 9081     | This runs kafka broker with two instances as cluster in kraft mode   |  Down
+
+
+--------------------------------------------------------------- Linux Commands
+>>java -ea -jar Application.jar
+>> nohup java -ea -jar <>.jar &
+
+>> ps -elf | grep "java"
+>> jcmd | grep kafka
+>> curl https://localhost:9090/<url>
+>> tail -f /proc/<pid>/fd/*
+>> kill -9 <pid>
+
+
+--------------------------------------------------------------------------------------Local Services for Pocs 
+1. kafka local setup | ZK:locahost:2181 broker-1:localhost:9091 broker-2:locahost:9092 | C:\kafka                                                                                              | 2181, 9091 , 9092
+2. Kafka Client----To create prod/cons client to connect to kafka                      | C:\Users\RHMBK94\My_World\Work\My_Learnings\Kafka\kafkaclient                                         | 9099
+3. webfluxservice --- To do poc with rx api using router and handler                   | C:\Users\RHMBK94\My_World\Work\My_Learnings\Java\webfluxservice                                       | 9090
+4. kafkaservice ----- To do poc for reactor kafka and its use                          | C:\Users\RHMBK94\My_World\Work\My_Learnings\Java\kafkaservice                                         | 9098
+5. Node -----POC																	   | C:\Users\RHMBK94\My_World\Work\My_Learnings\Node                                                      |  NA
+6  Docker pocs 																		   | C:\Users\RHMBK94\My_World\Work\DCL_IOTA\Team-Repos\mdo-event-service\Docker_Custom_Images             |  
+
+
+
+------------------------------------------------------------------- Docker compose
+ Multi container docker application
+ >> docker compose --help
+ 
+ >> docker compose up  -d daemon mode  
+ >> docker compose ps 
+ >> docker compose exec service_name 
+ >> docker compose stop
+ >> docker compose down
+ 1. create folder docker-compose-learning
+ 2. cd into the above folder
+ 3. create file <docker-compose.dev.yml>
+ 4. Apllication : node java data base
+ 
+ 5. name: conatiner name
+	Service:
+		app:
+			build:
+				dockerfile: Dockerfile
+		web:
+			image: "ngnx:version"
+			ports:
+				- "8000:80"
+			networks:
+				-my_network
+			depends_on:
+				-db
+				-rediscache
+		rcache:
+			image: "redis:version"
+			profiles:
+				-rediscache
+		db:
+			image: mysql
+			environment:
+				- key=${value}
+			env_file:
+				- mysqlile.env
+	network:
+		my_network:
+			driver: bridge
+		
+		
+		
+	>>  docker compose config
+	>>  docker  compose -f filename up -profile rediscahe -d
+	>> 
+	
+  6. .env for variables of docker compose files
+  
+  
+  1. Structure target 
+  
+  2. Docker 
+  
+  
+  
+  
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: [deere-ubuntu-latest]
+    steps:
+      - name: checkout source
+        uses: actions/checkout@v3
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'openjdk'
+          java-version: '17-oracle'
+      - name: Build Service
+        run: mvn dependency:resolve
+        run: mvn clean install
+		
+		
+		
+		
+==================================================
+  kubectl config current-context
+  
+  
+  
+  {
+  "name": "shishu1",
+  "description": "Cutter on unit1",
+  "type": "CUTTER",
+  "category": "CNC Enabled",
+  "detail": {
+    "sapId": "SAP100123",
+    "source": "SAP"
+  },
+  "count": 2
+}
+
+  
+  
+  
+ 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	
+			
+			
+Vite V8 js 
+	> npm 
+		> npx create-react-app demo --template react-ts
+	>vite & vite-plugin-federation
+		> npm init/create  vite@latest demo-app --template react-ts
+		> cd into project
+		> npm install 
+		> npm install -D @originjs/vite-plugin-federation@latest
+		
+		
+		Create remote application 
+			
+			vite-config.js
+			=== import federation and expose the component
+			
+			
+				
+			
+MCP server
+	ctrl + shift + p
+	Preferences: Open User Settings (JSON)
+			
+			
+		
+---------------------------------------------------------------------------------------
+C:\Users\RHMBK94\AppData\Roaming\Code\User\mcp.json
+Playwrite
+
+API testing is critical for ensuring seamless communication between application components.
+
+tools like Postman, RestAssured, or even Playwright’s native API testing capabilities come with challenges:
+
+	Code-Heavy Scripts: Writing and maintaining test scripts requires significant coding expertise.
+	Dynamic APIs: Modern APIs with complex payloads or authentication mechanisms (e.g., OAuth) are hard to test consistently.
+	Flaky Tests: Environmental issues or timing problems often lead to unreliable test results.
+	Accessibility: Non-technical team members, like QA analysts, struggle to contribute to test creation.
+	
+	 addresses these pain points by enabling natural language-driven testing
+	 
+	 
+	 Playwright MCP server acts as a middleware that interprets natural language instructions and executes them as Playwright API requests
+	 
+	 
+	 
+	 
+	 # Run all tests
+npm test
+
+# Run specific test types  
+npm run test:api
+npm run test:integration
+npm run test:performance
+
+# View detailed reports
+npm run test:report
+		
+	 
+	 
