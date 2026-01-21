@@ -1,0 +1,94 @@
+<dependency>
+    <groupId>org.springframework.kafka</groupId>
+    <artifactId>spring-kafka</artifactId>
+    <version>2.7.8</version>
+</dependency>
+
+For kafka 
+
+For kafka Streams
+
+<dependency>
+    <groupId>org.apache.kafka</groupId
+    <artifactId>kafka-streams</artifactId>
+    <version>2.7.1</version>
+</dependency> 
+
+Initialize properties:
+				StreamsConfig.Application_ID_CONFIG <name of the app>
+				StreamsaConfig.BOOTSTRAP_SERVER_CONFIG <Broker list>
+				
+
+LOgging
+	slf4j-api & slf4j-log4j12
+		log4j.rootLogger= info, stdout
+		log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+		log4j.appender.stdout.layout
+							  .layout.conversionPattern
+		
+
+
+cloud-stream as binder to kafka  for auto interaction with kafka 
+
+
+
+
+Running jar
+>> mvn dependency:resolve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

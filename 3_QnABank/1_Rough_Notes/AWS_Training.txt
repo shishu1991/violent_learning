@@ -1,0 +1,1380 @@
+Services to be covered from examination point of view 113 services (Some in depth and some with overview)
+
+Trainer [Sudhakar Nagasampagi] on linkedIn
+- 24 years of experience
+
+
+Prerequisites 
+	Need aws account 80% training will be on lab.
+	Have access to account and resolve all issues.
+	
+	
+Session -1
+
+
+Cloud computing  analogy with Electricity 
+    Technology ---> Virtua;ization
+    Services ---> [EC2]
+    Infrastructure --> have set up to provide resources to perform work.
+    Access to the Cloud ----> we use internet ISP
+
+On Premises 
+	You manage all the Servers, Storage, DB and app
+	
+Cloud 
+	Service Provider manages all the things plus generates the bill.
+	
+
+AWS (Business Model)
+	===> Data Center::::::: are abstracted physical server and we work with them through services (virtual servers)provided by cloud.
+	====> Old Technology + New Possibilities 
+	
+	Importance and popularity 
+		On premises CAAS :
+			Procure Invest maintain
+		
+		CC :
+			Cost savings :  
+				On premises: Investment (space, cabling, power, cooling, networking, racks, servers)
+			           AWS : 0 you can start and no long term contract  
+			Provisioning:
+				On premises: It takes several hours to spin up the resources (weeks as well) and process as well can be hurdle
+				AWS: Takes minutes to spin up the servers as per you rneed
+			Server Utilization:
+				OnPremises: The utilization of the servers are used only in work hours hence utilization is low and not optimized. ROI says you are using 10% utilization
+				AWS: 80-90 % utilization as it is offered globally.
+			Capacity Planning : 
+				On premises: To predict and provide a base capacity which will fulfill demand. This demand keeps on increasing (underprovisionin and overprovisioning) is always fighting . So to meet we invest but demands always increasing 
+				AWS: It meets the demand all the time it increases as per the demand.
+			Scalbility or elasticity :   up /down (Vertical scalling) in/out (Horizontal Sacalling)
+				On premises :Its difficult and needs investment and needs to maintained and utilized as per demand
+				AWS :: It gives you control to to scale 
+					Vertical Scalling : 
+						There is downtime
+						There is limit to extent you can scale up
+					Horizontal Scalling:
+						It has a cost associated to each new instance you scale out
+						It is more preffered
+			Availability: 
+				                      You have machine if all user are accessing same application and the only mc goes down. Then you lost the availability. 
+					Multiple instances are always running in the same DC
+					Instances available in different zone
+					Instances available in different region
+					Instances in multi cloud 
+					
+				
+				Onpremises : 
+				
+				
+				AWS: 
+					® 100% availabilty is never provide or can be provided. 
+					® They provide is 99.99% is refered as 4 Nines  it can be down 53 minutes in an year
+					® 5 nines is not practical with (5.23 minutes in an year)
+					® 99% is also not acceptable (3.65) days per year 
+	   
+		                              ==> Best is 3 nines or 4 nines ******
+		
+		
+			           Disaster recovery 
+			                - 100% up time
+			                - Has lot of redundant instances 
+			                
+			CapEx and OpEx (paradign shift) or capital Expense  and operation expense
+	
+		                        All cound has no CapEx only OpEx
+		
+		
+		
+		
+		Definition of CC Cloud Computing: NIST 
+		
+			Five (5) Essential characterstics
+				- On Demand self -service
+					® Ondemand any time 
+					® Should be a self service own my own example (ATM)
+				- Broad Network access
+					® Globally access 
+					® Any device with Internet and browser.
+				- Resource Pooling
+					- Resources optimizing (Car pooling)
+					- Share the resources and cost is reduced.
+				- Rapid elasticity
+					- Scalling 
+					
+				- Measured Service (is on provider to give it as free or at cost)
+					- Control over usage and bill as per the usage by you.
+			Three (3) Services model
+					 - SaaS
+						Apllication exposed as services easiest 
+						No customization we can do it SaaS.
+						Integration of  application is not possible.
+						Most used model
+
+			         - PaaS
+						Need technical expertise to work (Program)
+						IDE 
+						CLI
+						SDK
+						APIs
+						DB
+						PL
+						Integration is possible as per choice.
+					 
+					 - IaaS
+						Major model used by operations team to with max technical expertise 
+						Provisioning
+						Storage 
+						Compute
+						Network
+						Back
+						Rstore 
+						security and upgrades
+						
+						
+					Two Perspective while using any model
+						  User | Provider
+					SaaS  only use | Take care of everything
+					PaaS  develop app using development env| Takes care of underline infra 
+					IaaS  Evrything is controller by user | Physical provisioning of resources   as per demand 
+						
+			
+			
+			Four Deployment Models
+				States: Who is the owner os the cloud and where is it located?
+									User/consumer | 				Owner 						|     Located										| Points
+														
+				Public: 		Anybody	No restriction| Third party cloud provider like AWS,MS		|     Off site location 							| Protect from anti social people
+					
+				Private (with virtualization):		Accessed by employee of 1 org  |   Owned by organisation 				    | On-site/premise Private cloud (within IT) ::: Off-Premise (outsource to TP Cloud provider) | Secured and protection both can be provider and consumer
+				
+				community:   Multiple organisation | Owned by the members of various organisation belonging to same domain      | one of the organisation will be selected and will be resposible for the infra | 
+				
+				hybrid:  combinition  Public with on-site private 
+				
+				Cloud bursting: Application is deployed on public cloud for a temporary period to handle additional spike.
+				
+				
+			Various Cloud Provider 
+				AWS  32%
+				Azure 23%
+				
+			Cloud 
+				Consumer
+				Provider: 
+				Auditor: Associated with provider and check the services are as per the standard and mentioned in SLA 
+				Broker: Knows which is the best among the various service provider Option
+				Carrier: ensure connectivity between Consumer and Provider.
+				
+			
+			
+			
+			
+			Responsilbility and taxonomy model
+			
+								You Manage 					| 					managed by vendor
+				
+			SaaS			Use application					|                      		All
+
+
+			PaaS			SC and data you own 			| 						Rest by Vendor
+			
+			
+			IaaS			Control OS and apllication      | 					They control the physical resources  (More flexibility with more responsibilty)
+			
+			
+			
+			Challenges
+				Security
+				Privacy
+				Costs 
+				Compliance
+				Cloud Migration
+				Governance 
+				Vendor lock-in: Locked with one vendor who has properatory (Owning all the products of one vendor)
+				
+				
+				
+			
+			
+			
+			Virtualization 
+					single physical resources to be used to run mutilple instances of application using (Containers/ Hypervisor)
+					Hypervisor: Segments the machine HW (Host) by providing sperate OS. VMM
+					Containers
+					
+					VM : without OS and Application
+					VS : WITH [H/w+ OS+ App]
+					AWS uses: Instances of AWS.
+					
+					
+					
+					
+
+
+
+
+
+Session -2  ::::: AWS  
+	- Major cloud service provider
+	
+	Adv
+		- Variable expense instead to fixed
+		- massive economies of scale
+		- No capacity planning is required
+		- Increase speed & agility
+		- No maintainance of DC
+		- Go global in minutes
+		
+		
+		- It is an IaaS at its core
+		- Fundamental building blocks thats the customer assembles to meet their requirements
+						- Its paradigm is not provide the archietecture everything is your responsibilty
+		- Managed services 
+		- Unmanaged Services
+		
+		
+		
+		
+		AWS 
+			36 Region --- region with in all continents / Geographical location 
+			
+			114 AZs are actual DC located 
+			
+			Two regions GovCloud and GovCloud also china regions are inaaccesible for us.
+			Use region near to your customer.
+			
+			
+			During trainining we will work Oregon (4) or N Virginia.
+			
+			
+			
+		Region:: Mumbai (3)
+			AZ::::: AZ1, AZ2, AZ3 || AWS Suggests always deploy your application in atleast 2 AZ to be availability || Each region as AZ > 2
+				Availability Zone : Cluster of DCs each DC is 8 Football Field space to has Physical server/ will reside in a different place within same city with in distance of 300KM
+					VS ---> PS ---> DC -----> Cluster of DC ===> AZ1
+					VS----> PS----> DC------> Cluster of DC ===> 2a, 2b, 2c , 2d ===> us-west-2 --> Oregon
+				Each Region has AZs
+				AZ are connected by High speed networking
+				Designed for fault isolation 
+			
+			Local Zone : Is not AZ is extention of region to decrease latency 
+			Wavelength Zone : for mobile based application.
+			
+			
+			
+		
+	Services 5 categories 113 service
+		AWS compute service 
+			EC2 ---> Amazon Elasctic compute cloud
+					Elastic
+					Control
+					Flexibility
+					Integrated with VPC Autoscalling
+					Reliable
+					SecuredInexpensive
+					Simple
+					
+					- Can inoccur cost either by hr or by sec
+					- AMI is provides Amazom machine image ---------> set of dependecies you can mention with 1 OS  & create image and spin the image as per the need.
+								Template define
+									- storage volums
+									- permissions
+									- block device mapping
+									
+					- Intances and type 
+							General Purpose least expense
+							A & T and M
+							Compute optimized
+							C
+							Memory optimized
+							R & X
+							Storage optimized
+							14g & I & D & H
+							Accelerated computing most expense
+							P Inf G Trn
+					- Instance 
+						Select AMI 
+						Select Type 
+							Root Volume is attached to Instances
+						Select Network
+						Select Subnet
+						Selct Key pair
+						Select SG
+							Firewall is attached to teh instance | Security group helps to allow(inbound or outbound) the traffic which are goverened by SSH: 22 Http: 80 http: 443 rules for linux | RDP: 3389 rule for windows | 
+						
+						Launch
+							Lifecycle
+								run --> start ----> Stop ---> terminated   | cahrges are applied only for the live state btw start and stop
+							
+							
+		
+		ELB 
+			Elastic load balancing 
+				Navigate to Left panel> Load Balancing >  Load Balancers > 
+					ALB : balance the load on http and https 
+					NLB : Balances on UDP and TCP 
+					GwLB : Balances the load from appliances
+					Classic LB : balance both traffic http or network 
+				
+				Name 
+				Selct VPC
+				Select zones (your application deployed upon)
+				Select SG web_SG
+				Listener and routing: defines traffic which is allowed and to which port of the ec2 is open to route the traffic.
+				Health checks:
+					Response timeout - 2
+					Interval -5 
+					unhealthy - 2
+					Healthy threshhold - 3 
+					
+					
+		Auto Scaling Group (Horizontal scalling)
+			1. EC2> Launch Template/ configuration to be set up.
+				This indicates 
+					- name
+					- select AMI 
+					- instance type 
+					- security GP
+					- KeyPair
+						Go to home > key pair > create keypair
+							- name:
+							- pair type: RSA
+							- .pem
+							- Download the pair 
+			2. Set up Autoscaling Group
+					- Name
+					- LT: reference to launch template(1-1) mapping
+					- Desired size: instances to be spin up on start : 1
+					- min size: 1
+					- max Size: 3
+					- network: 2a , 2b , 2c
+			3. Scaling Policies [Condition to trigger and stop instances]
+					- Increase Group size
+							- CPU Usage >= 50 % for 1 minutes , Add 1 instance
+								
+					- Decrease group size 
+							- CPU Usage <= 20% for 1 minutes, remove 1 instance
+			
+			
+				
+					
+		CloudWatch: 
+				Monitoring services 
+				- Always measuring some metrics of EC2
+					- cpu usage, network, disk, 
+					
+					
+					
+	
+	
+	Ondemand 
+		Instances costing  and saving plan |||| charges are per hour or per second  All /partial/ no payment option
+			on-demand: $1 per hour
+			reserved: 0.25 per hour
+			spotInstance: 0.10 per hour 
+			dedicated: most expense per hour 
+			savingsPlan : 0.28 /hr you can changes the instance family.
+			
+			
+	AWS Elactic Bean Stalk : [all the provisioning EBs]
+	Aws Outpost : Service that allows you to run AWS Services like Ec2 in your on-premises datacenter
+	AWS Serverless Apllication repository. 
+		Cloud Foramtion 
+	VMWare cloud AWS 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	-------------------------------------------------------------------------------------------Session 2
+	
+	
+	
+	Unmanaged service 
+	EC2 Elastic compute cloud
+		- Elastic IP <Fixed or range of IP which do not change>
+			AWS has a pool fo elastic IPs it is scarced resource. You request for an elastic IP. It will allocate the IP from the pool and it is linked to your IP.
+			Once you have it you can allocate it to your instance.
+				If the instance gets failed it will get associate it to other resource. 
+				If you terminate it will IP disassociated
+						If you are using EIP it wont be charged but if it diassociated then you will be charged. 
+						You have a limit of 5 EIP for each account
+						
+						
+						Private IP always have a private IP
+						Public IP may or may not have public
+						Elastic IP may or may not have EIP
+							EIP = Public if you have EIP which will be used to connect to internet.
+						Remapping association time is 180 sec or 3min
+							
+		- Volumes
+			- Root volume size depends on OS which is used to spin up the instance
+			- Volume is a storage type of EBs
+			- Create a volume for data which goes from 1GB to 16TB
+			- Attach it to your instance 
+				------ Work with data process 
+			-- Remove instance 
+				--- instance is removed 
+			- Data is still there in volume 
+				you can associate with other instance
+			- Charges of volume 
+				Default size is 100GB
+				AWS charges you as per the size you have provisioned so in our case its 100GB
+				You cab autoscale the volume.
+				Once Volume is created only scalling up is allowed no down is possible
+				Volume and instance needs to be in same AZs
+				Same volume cannot be associated with 2 instances at the same time.
+				mutiple volumes can be associated with multiple instances 
+				you can encryption of data on volume
+				you can share the data accross regions
+					Types 
+						- General Purpose SSD  cheaper 
+						- Provisioned IOPS SSD for reading and writting  most expensive
+						- Cold HDD for non frequent data 
+						- Throughput optimized HDD (Slow)for sequential data
+						- Magnetic (cheapest unreliable)
+					Size 
+						1GB to 16TB
+					AZ
+						Should be selected 
+						
+		
+		Storage 
+			Block ----> 
+				if not needed create backup (snapshot) which is an object storage. 
+					- YOu can restore the backup from snapshot to block(can be modified type, size and AZ and apply encryption) and attach it to instance.
+					- Copy snapshot to different region
+					- good for striuctured data 
+			File
+				semi structured nosql
+			Object
+				unstructured 
+			
+			
+		AMI 
+			Image creation from AMI base + custom script
+			
+			
+			
+			
+			
+			
+			
+			
+			
+Networking and Content delivery 
+		VPC:: 
+				Company-DC =============> AWS cloud gives you a setup to have private cloud or network within public cloud which is accesible to company only.
+						- No infrastruture set up cost and management of infra is taken care by AWS
+						- More robust as compared to private cloud 
+						- Cost saving 
+						- HIgh availability
+						- Security : only accesible to your company
+						- All instance has to be in a VPC **
+						- There is a SG for each region similarly we have VPC for each region.
+						- 
+						
+					Concept 
+						IP address: IPV4 and IPV6: a mailing address of a computer connect over internet. 
+						Only IPV6 is not possible.
+						
+						
+						Networking concept 
+							-- class based IP  routing
+							-- Classless interdomain routing - Cider routing  IP block / netmask blocks
+								-- netmask /32 --- 2^0 
+										/ 31---2^1
+										/30---2^2
+										/28--2^4
+										/24--2^8 =256
+										/20--2^12  = 4096
+										/16--2^16 ====65.536
+							-- IP give me IP address and netmask gives how many ips can be used
+							
+							
+							
+							---- VPC exists between /28 to /16 
+							--- with 5 IPS are reserved for AWS : ...0,...1,...2,255.255
+							
+							
+							----RFC 1918 rule for IP Address block 
+									10.0.0.0--- 10.255.255.255
+									172.16.0.0-172.31.255.255
+									192.168.0.0 - 172.168.255.255
+							
+							
+					VPC
+						- cannot launch the instance directly 
+						- cannot be created in a particular AZs
+						- 	Break your VPC into subnets
+								--Subnets belongs within the a single AZs
+								-- Public subnets ::Instance within subnets which can reach out to public internet public subnets
+								-- Private subnets ::
+							-- VPC has firewall which has NACL (Network Access control list) at subnet level
+									
+									
+							ec2 instance ---> SG at instance level  ----> Subnet has NACL ---> Route table
+									        Adding rule in SG means allow the traffic | It is statefull ----> At subnet level you can Allow/Deny | create both rule in NACL for outbound inbound | stateless  --- > 
+									
+									 
+					
+					Route table 
+						- has rule to direct the traffic to route the traffic in and out
+						- Internet 
+						
+						
+						
+						
+						
+						
+						
+						
+						
+			VPC Its reginal service and limit is 5.
+				Region : oregon 
+				AZ : a, b, c, d
+					- name : myvpc
+					- CIDRblock: 10.0.0.0/16
+						Automatically 3 components created 
+							- Default SG is created 
+							- NACL will be cretaed 
+							- Route table WILL BE created as main route table
+					- We need to create an internet gateway and attach it to vpc
+						- one vpc can have one Internet gateway
+					- create a public route table will have rule which allow traffic to internet define destination and target in route table.
+					- create subnets public : 10.0.0.0/24 in AZ a  associate it to public route table -- Instance with SG application will run | will have public IP
+					- create subnets private 10.0.0.0./24 in AZ backup associate it to main route table -- instance with SG DB will run  | 
+					
+					
+					
+					--- NAT Gateway 
+							private subnet - >> main route table | rule will be added to allow traffic from private subnet to NAT Gateway which will allowed 
+							will use EIP to connect the private subnet
+					---- Bastion Host to SSH to private subnet through public subnet 
+						
+							
+					--- Virtual Private gateway 
+							-- VPN connectivity --- Customer Gateway ---> finally connect to CDC 
+							Direct connect to directly connect VP gateway to CG
+							
+							
+							
+							
+							
+							Default 
+								1 VPC 2
+								1 NACL 2
+								2 SG 3
+								1 Route tabel 2 
+								
+								
+								
+								
+								
+		---------------------------------------------------------------
+					VPC has 
+						tab : Flow log
+								- history of the traffic moved in and out of your vpc.
+						left panel ->
+							Peering connect: connection  between vpcs -->  trasitive peerig is not supported
+							Transit gateway : to connect 
+							
+					AWS VPN	
+						Client VPN :  clint to CG
+						Site to Site : VPG to CG
+						Direct connect -->
+						Global Accelerator
+						AWS 
+						
+								
+						
+						
+						
+		Storage: 
+		
+			S3 : Simple storage service 
+				- Global service Store in 1 region and available in any region. 
+				- Ideal for unstructured data  (all files, snapshots)
+				- Type 					Block													|  Object
+						
+									- Stored on HD												| Stored on disk as entity
+									- Incremental addition / updateion / deletion				| No incremental addition /updation/deletion
+									- Not scalable												| Highly scable
+									- 															| 3+trillion object and searhable is constant 
+									- limited													| unlimited object					
+																								| 5T size is max size of an objects
+																								| Stored in buckets
+																								| 100 buckets max in a account 
+																								| 1 bucket is enough by AWS
+																								| Use multiple bucket for convinience 
+																								| No Directory structure
+																								| bucket name should be small case (alphanumeric and - _ )
+																								| unique name thorughout the globe
+																								| It follows WORM write once and read many time
+																								| Store the snapshot| volume | AMI of your DB but cannot connect to instance
+																								| Putting into S3 is free
+																								| Reading and 
+																								| available 99.99
+																								| durable 99.9999999 (11 9s) always 3 copies of objects in every AZs of the region
+																								| Encryption is there on all object.
+																								| YOu can change the encryption type
+																								| transfer acceleration is possible
+																								| Storage type 
+																										- Std (most expensive)
+																										- Intelligent tiering (to transition the object accross different type automatically)
+																										- infrequest Access (IA) (1 in months)
+																										- one Zone | All copies will be in one zone (durability is 5 9s)
+																										- RRS | reduced redundancy storage (Only 2 copies) Availabilty and durabilty will depricate
+																								- Glacier | long term storage archiving data  | when data is not frequently retrieved
+																										- retreival time is long no real time access
+																										- Cheapest storage service
+																										- Glacier deep archive
+																										- Object are called is archives
+																										- Container is valuts instead of bucket 
+																										- Size is 40 TB
+																										- always encrypted 
+																										- Principle WORN ()
+																											-- s3 glaciew 
+																												expedite  | long
+																											-- deep archive 
+																								| usage 
+																										- Static website
+																										- versioning
+																										- MFA delete 
+																										- Lifecycle management to transition the object through different stoarage
+												  														- CRR cross origin replication across  instead of same region it one way replication.
+																										- Object Lock (no deletion or termination is allowed)
+																										- Event notification on upload delete of an object. 
+																										- Set permision to read and write on object using bucket policy.
+																										
+																									Policy Obeject 
+																										- Effect Allow/Deny
+																										- Principal: who is allowed * all
+																										- Action: action to be allowed 
+																										- Resource: which bucket or resource
+																										
+					
+					
+					
+					CDN 
+						- Content delivery network
+						- concept is global concept adopted by various org
+							- using through CDN there would be a slight delay 
+							- set up replication regions via a network
+							- replicate regions transfer and cache at edge location 
+							- AWS more the 500 CDN location or edge location 
+							- Cloudfront is the service that enable CDN 
+								- By specifying the distribution in the specif region
+								- Enable origin access  control feature which will force the user to CDN only and secure bucket
+								- disable WAF
+								
+								
+								
+								
+					EFS 
+						- To create a file and share it within two instances 
+						- Lifecycle policy 
+							- EFS stnd
+							- EFS inferequent storage
+							- FSx lustre high io ops 
+							- FSx for windows files server (SMB)
+					Backup 
+						- All types of storage can be backed up.
+					Storage agteway
+						- for data on premisses and applciation on cloud
+						- File Gateway 
+						- Volume
+						_ tape gateway
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+------------------------------------------------------------------------------------------AWS DB
+	Relational ---> 
+		amazon arora 
+		redshift with analytical capbility
+		
+	Key-value nosql 
+		-dynamo DB
+	document  nosql DB
+		
+	timestream for time series data 
+	in-memory elasticcache
+	graph     node and branches  tree structured neptune
+	ledger for blockcahin quantum leger
+	keyspaces casander for wide colums
+	
+												DB : RDS
+													- it is a PaaS server
+													- It is managed services
+													- supports 2 model 
+															IaaS model | PaaS model
+														- ec2- your DB | Aurora
+																	   |Sql
+																		Postgresql
+																		oracle
+																		sql-servermaria
+																		IBM dB2
+													- Multi AZs deployment is optional 
+														- Primary DBs
+														- Secondary DBs
+														- Synchronus replication
+														- Not for performance improvement
+														- It is for disastor recovery 
+														- read replicas is the feature 
+													- Automated backup 
+														- are always performed on secondary
+														- you can control the time 
+														- maintian it for 35 days 
+														- DB snapshots are available in S3
+														- managing your backup.
+													
+													
+													
+													
+													
+													
+													Scenarios -----> 
+													
+														S3 bucket 
+														disable block public access 
+														update policy in place
+														
+														upload a file DB file into PHP 
+														AZs 2a 2b 
+															web | DB
+															Linux 2 KVM
+															WebSG
+												DB : Nosql (key-value)
+													- semistructured data 
+													- problem was scaling 
+														type 
+															- key-value or document based
+																dynamodb 
+																	- it is schema less 
+																	- it is on the fly add rows and column 
+																	- unlimited rows 
+																	- signle digit miliseconds latency 
+																	- IOT | Gaming | session state 
+																	- high available 
+																	- highly scalable
+																	- global tables 
+																	- replication of tables and insync 
+																	- directly start with table key and a primary key or partition key (unique) 
+																	- sort key a composite key will act a secondary key 
+																	- sort or partiction key can be of these type string , number and boolean
+																	- rows as items
+																	- columns as attributes
+																	- query using scan & query also partiQl function
+																	- you can setup indices (local secodary or global secondary)
+															- graph
+															- wide column
+															- document 
+															
+		Datawarehouse 
+			OLTP---> transaction proceessing 
+			OLAP -----> Data over the years for various domains for analytical processing
+				----> aggregate function (sum/total/max/min/coutn,average)
+				----> we need differenct mechanis to get the results from a Peta bytes of data 
+				----> we need different format to store the data 
+				----> for business inteligence or analystics 
+				DB: 
+					- RedShift 
+					- it is bloack storage 
+					- massive parallel processing 
+					- Masters and slaves architeture of hadoop
+					- it stores in columns instead of rows columnar storage 
+					
+		Elastic Cache
+				- To store frequently accessed info from DB by application the use elastic cache 
+				- To improve performance 
+				- Redis more expensive
+				- MemcaheD has less feature 
+		
+		Timestream 
+			- time series data 
+		Graph 
+			- Neptune 
+			- tree structure based
+		Ledger 
+			- Qunatum Ledger DB 
+		Keyspaces
+			- Casandera distributed  mission critical 
+			
+--------------------------------------------------------------------------------Security IAM 
+		Security service
+			- Authentication and Authorisation 
+			- Global service
+			- Root User
+			- Free
+			- Entities of IAM
+				Policies
+					-- way to provide set of permissions
+					-- create policy using a json
+					-- there is no principle in IAM policy 
+						statement  json 
+								version
+									statement:
+										action: a/d
+										effect: read 
+										resource: 
+					-- administrator access policy 
+							action: a
+							effect: *
+							resource: * 
+					--- 
+						-- own set of policy 
+						-- custom policy
+				groups
+					-- create groups as dev /test
+					-- add user to group 
+					-- add resource to the 
+				user
+					- root user ()additional account : enable /diable  change password 
+					- power --- they cannot work on IAM 
+					- admin ---  except addition account
+					- general -- controlled access 
+							- we can have both type of access 
+							- trasitive access is not possible
+
+						
+					Access type 
+						- mng. console access 
+							- u / pass
+							
+						- prog access 
+							- keyid 
+							- secretaccess
+							
+						
+				roles
+					- five role to work with aws service 
+					-- roles are not associated with user 
+					-- roles are created to interact with services 
+					-- Admin can assign the role to user.
+						- AWS service access 
+							- Allow one service to access the other service
+						- Cross account access  
+							- allow service to use a service of other account
+						- federated identity role 
+							- SSO for org
+						- web identity 
+							- third party account 
+						- trusted access 
+							- to truted user
+				identity provider
+					- SAML 
+					- open AUth
+				account settings
+					- set up password policy for you account users
+			
+			
+			
+			Role are always associted to policies 
+				
+-------------------------------------------------------------------------------------------------------Computing
+		- serverless computing 
+				- It means AWS is maintaining and managing thse server
+				- Event driven programing 
+				- FaaS function as a service
+				- Lambda service	
+						- you dont wory about BE of the application 
+						- User is responsible for code and functions
+						- use any language 
+				- they provide runtime
+				- they setups the infra and you are billed only for the time when code executes.
+				- highly scable
+				- standalone 
+				- trigger based on an event
+					
+					
+					
+					
+					
+---------------------------------------------------------------------------------------------------IaaS (Cloud Formation) 
+
+------------------Set up the infrasture and spin up the application using a code or deployment file.
+				--- launch an instance 
+						-- AMI
+						--Instance type
+						-- key pair
+						-- SG 
+						-- network
+						-- user data    
+						-- ASG
+						-- 
+				-- Introduce automation to avoid tedius job 
+				-- You can write a code and create template 
+				-- Cloud formation 
+						- It is used to create template 
+						- supports 2 formats json / yaml
+								- Teamplate need to define adn specify the requirement (ec2, ami, type, sg, network, userdata)
+								- execute template 
+								- it creates a stack 
+								- use it launches multiple instance and multiple times.
+								- it is portable 
+								-- designer board / composer you can drag it will place an ec2 
+								
+								
+			----------------------- SNS delivery
+			
+				- notification service 
+				- works on pub /sub model 
+				- topic
+				- publisher publishes on the topic
+				- multiple subcriber can subcribe to multiple topic 
+				- 2 type 
+					- standard order is nto maintaned 
+					- FIFO maintain order 
+				- setup topic we need set protocal 
+				- email | message | trigger | sqs | http endpoint
+				- subcriber has to confirm to the ready to accept the message 
+				
+						-- steps 
+						--- create topic 
+						--- give name 
+						--- give type (stnd | fifo)
+						--- set access policy | publisher - everyone and subcriber- everyone
+						-- create topic and then create subcription
+						--- Will have ARN which will be to create subscription 
+						--- select protocal (email | message | trigger | sqs | http endpoint)
+						-- create subscription 
+						
+						
+						-- S3 
+						-- got to your bucket > properties 
+						--- got to event notification 
+						--- create an event notification 
+						--- PUT 
+						-- Destination 
+						-- SNS topic 
+						-- choose your topic 
+						-- save changes 
+						-- uplocad the file 
+						
+						
+		-----------------------SQS processing 
+					--- to avoid tight coupling 
+					--- never to use loose coupled 
+					----type stnd & FIFO 
+					-- 4days is the default persists in the queue max to 14days
+					--	subcriber pull or polls the queue 
+					-- once pulled it is not there if it processed it is deleted 
+					-- otherwise it put back 
+					
+					
+		---------------------------- Cloud Shell 
+		
+		
+		
+		
+		
+		
+		
+	------------------------------------------------------------------------------------------------Microservice architeture 
+		--- Monolith 
+			-- saclability 
+			-- tightly coupled 
+			
+		--- 
+			-- Decoupled the services into modules 
+			-- All applications are not suitable for it.
+			-- reuired a gateway will be the entery point and will discovery the BE service 
+		
+		---- API Gateway 
+		
+		---- Container 
+				-- standard unit of software [packaged as application into one unit which is easily portable accross platform]
+				-- Docker image [packed software which can be run into]
+				--- Virtualization 
+					-- hypervisor virtualization (mc is same but OS is seprate)
+					-- OS virtualization (OS is shared but containers are seprate)
+					-- Hybrid virtualization is also possible 
+				--- ECR -- 
+					-- Image
+					-- Elastic container repository:: docker repository 
+					-- ASG and autoscalling for container is possible
+					-- Orchestration system :: Docker swarm 
+					
+					--- A EC2 container service  (ECS) 
+							-- Build image
+							-- build applcaition and the image
+							-- serverless and serverbased (you need configure the ec2)
+							-- for ETL extract transforem load type of usecase 
+							
+								-- Steps 
+									-- container defination  image and ocntainer
+									-- task defination blue print of applciation by combining application | create container
+									-- service for managing the state of the container and maintains the state of container and applciation are up and running
+									-- Cluster | grouping of instances with above steps on each container
+					-- AWS fargate
+						-- Servless container services 
+						-- can work with both EKS and ECS
+					
+					
+					Components:
+						ECS Cluster: A logical group of resources (EC2 instances or serverless Fargate tasks). It’s equivalent to a Kubernetes Cluster.
+						Task Definition: A blueprint specifying containers to run (image, CPU/memory, networking).
+						Task: A running instance of a Task Definition (similar to a Kubernetes pod).
+						Service: Ensures a specified number of tasks are always running (similar to Kubernetes Deployments).
+					--EKS
+					
+					
+					
+					
+					
+	
+	
+	
+	Cloudwatch 
+		-- Monitoring service
+			---- Alarms 
+				
+			---- metrix
+				cpu , disk , net work , 
+			---- logs groups and streams
+					logs can be stored in loggroups 
+					each log groups you streams 
+			--- events 
+				-- need to setup 
+				-- Instance state change 
+			-- it integrates with other services but not by default you have to login 
+			-- in s3 enable service login
+			-- its log flow 
+			--  type Basic -- free| enhanced monitoring -- cost 
+		
+			
+		
+					
+	Cloudtrail 
+		-- continuously logging of your account.  with auditing
+		-- it gives the history with user and resource 
+		-- enable it per region 
+		-- accumulate the trails into one region 
+		-- event history
+		
+	Trusted advisor :
+		-- six categories or pillars 
+		-- default plan is tandard 
+		-- plan is upgraded and your paying then we can choose options 
+		-- It wil give you advises whether it safe or not.
+		
+	Data migration service :
+		-- target schema 
+		-- schema conversion is limited (limited can be converted to RDS)
+	
+	
+	
+		Snow  (import export)
+			from any storage type to a region of AWS if the size of data 
+			-- snowcone 8T
+			-- snowball edge  50 TB
+			-- snowball mobile 100 PB
+		import/export 
+			0 to 16TB
+			
+			
+	EMR: (Hadoop | Bigdata)
+		Batch Processing for huge amount of data
+		Elastic Map reduce 
+		Redshift
+	Kenisis: 
+		in real time processing'
+		
+		
+		
+		
+		
+		
+		
+		
+		------------------------------------------------Security  WAF 
+		
+		
+				--- Network 
+				-- data
+				-- Identity 
+				
+				
+				Shared responsibilty model (Shared responsibility)
+					-- Security of the cloud is by AWS 
+							-- infra 
+							-- virtual server
+							-- custodian 
+					-- Security in the cloud is by customer
+							-- Intrution prevention system 
+							-- NACL and SG
+							-- Firewall 
+							--- Application 
+							-- Roles
+							-- Data and its encryption 
+							-- minimum access 
+							-- every layer should be secured 
+							-- best practices 
+							-- ports open not recommended
+							
+							
+				WAF  application layer security 
+				
+				
+							-- Load Balcancer 
+									Application network gateway 
+									
+									
+									
+
+
+
+-------------------------- DNS (Learn )
+		--- Route53 Global distributed DNS server translates name to IP
+		---  Load balanced accross regios the use DNS 
+		---  Routing policy you can apply 
+		---  Helath checks 
+		---  Needs custom domain name 
+		---  you can purchase domain 
+		---  DNS port is 53 
+		---  DNS terminolgy and mechanism 
+		---  Perform health checks 
+		---  Routing policies 
+				-- balanced 
+				-- weighted 
+				-- latency based (response time is analysed and selected server responds)
+				-- failover based 
+				-- geo location 
+				
+				
+				
+--------------------------------------- AWS inspector 
+			--- To check vulnerability in your provisioned resource 
+			--- You run it on your account 
+			-- It will report 
+			-- Gives you recommendation to suggests devsec 
+			-- ondemand pricing models
+			---two major area 
+					NETWORK ASSETMENT
+					Configure
+					run 
+					check
+					recommendation 
+					actions
+			--
+			
+			
+---------------- AWS API gateway 
+
+
+
+-------------- AWS shield for Dos attack 
+				_ stand and advance 
+				-- Advanced is 24x7 Dos team 
+				-- 
+
+					
+				
+				
+							
+ 
+ 
+ -------------------Data security 
+ 
+		KMS 
+		Sserver side encryption 
+		AWS cert manager
+			set up and use it for your application 
+			public certifacte to identify resource 
+		Data at rest 
+			encryption 
+			KMS 
+				create maitain and delete AES256 encryption 
+				available in all region except china 
+				Symmetric  same key 
+				asymettric  (public & private)
+						3 types of key 
+						-- customer 
+						-- aws managed 
+						-- aws owned 
+							MK --> generate Data key (plain test encrypted key)
+									will be used to encrypted the data
+									---> (encrypted data key will be matched with Customer master key whcih gives decryption algo )
+										---> wil be used to decrypt and  encrypted  key stored with data 
+				
+		Mecie
+			-- analyse data and discover sensitive data 
+			-- take 
+		 PII 0 -4 0 is open 4 -restricted 
+		
+		---- Transit protection 
+			SS/TLS
+			SSH 
+			VPN / Isec
+			
+		CloudHSM Hadware security manager
+			Device to secure the data
+		Guard Duty 
+			: fraud detecion 
+		AWS security hub 
+			: secure using multiple seervices for orgnaisation
+			
+		Amazon detective : 
+			service: isolate  
+					- Clud trail 
+					-- flow logs 
+					-- guard duty 
+					
+		Amazon cognito 
+			: Thirdpart login federated I provider
+			: user pool 
+			
+			; Identy pool 
+			: SSO 
+			: Identity directory : OKTA 
+		Physical Security DC
+				: sepration od duty in DC 
+		
+		Amazon compilance 
+			: GDPR 
+			: HIPAA
+		
+		
+		Amazon artifact :
+			certificate
+			
+		Amazon disastor recovery 
+			: RTO
+				: 2 hr is acceptable
+			: RPO
+				: 1hr 
+				
+			-- backup and restore 
+			-- pilot light up 
+			-- warm server 
+			-- multi site 
+			
+			
+			
+			
+			
+-------------------- Analysis services ------
+
+			process analysis 
+			analytics 
+			
+			data 
+				: volume (large or diverse) data lake 
+					AWS lake formation 
+					- Athena
+					- RedShift
+					
+				: Velocity
+						Batch
+							EMR
+							Glue
+						near real 
+						real 
+				:
+		
+														
+													
+	
+	
+	
+	
+	
+	65 (130)  45----> 50 ------> [] -- 36+ 15 ---> 51--------------------> (8-10 question will be multiple) 30 mins additional.
+	English g
+	
+	skillbuilder------------------->
+	twitch--------->
+	AWS cloud quest 
+	AWS Jam
+	Linkeein Link to mock test
+	
+	Role for resources 
+			-- User for 
+			
+			
+			
+			
+			A, C , E
+			
+			
+			
+			
+			A C 
+			
+			A, B, E
+			
+			A
+			
+	
+	
+	
+						
+								
+								
+						
+																									
+																												
+						
+				
+				
+			
+			
+			
+			
+		
+		
+		
+		
+		
+
+		
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+
+					
+					
+					
+					
+					
+               
+	
+	
+	
+	
+	
+
+
+
+
+	
+

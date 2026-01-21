@@ -1,0 +1,18 @@
+FROM ubuntu 
+
+RUN mkdir /iota-app
+RUN echo "Hello! I will create image of ubuntu with java installed on it."
+RUN apt update
+RUN apt --version
+RUN apt install -y default-jdk
+RUN apt install -y vim
+RUN apt install -y curl
+
+RUN echo 'JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/bin/java"' >> /etc/environment
+RUN cat /etc/environment
+RUN ["/bin/bash", "-c", "source /etc/environment"]
+SHELL ["/bin/bash", "-c"]
+RUN echo I am using bash, which is now the default
+
+# VOLUME local-pocs
+WORKDIR /iota-app

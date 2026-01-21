@@ -1,0 +1,16 @@
+Automation with cypress
+
+
+1. Install Node and npm & nvm
+2. Create a demo dir
+	>> mkdir cypress-automation
+3. Initialize a package and package.json 
+	>> npm -i init || yarn init
+4. install and setup cypress 
+	>> npm install cypress -save -dev  || yarn add cypress --save -dev
+6. install ts 
+	>> yarn add --dev typescript
+5. launch cypress
+	>> npx cypress open || yarn cypress open | run
+		
+

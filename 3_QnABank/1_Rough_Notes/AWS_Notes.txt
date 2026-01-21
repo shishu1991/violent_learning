@@ -1,0 +1,74 @@
+AWS : with Deere.
+
+
+
+JD Datacenters ==> Custom server is very difficult and plan in advance.
+
+One option to get the server and m/c 
+	1. AWS 
+	2. Azure 
+
+
+
+AWS region == Geo location 
+	AZs Availability == closet data centers by AWS. (2 minimum) connected via high speed network
+	
+	
+	
+	
+	
+AWS shared responsibility 
+	Customer  ---> managed by user
+	AWS --- provided by AWS 
+
+
+
+mycloud.deere.com 
+		Info and new account provisioning. after approval from EM GEM 
+		
+
+
+VPC 
+	All the network and application needs VPC.
+	
+		Types 
+			Stanadalone: Youn can deploy unlimited application. 
+			Floating
+			VPN --- To connect from deere network. there is a limit on number of IP.
+			
+			
+			
+
+IAM 
+	: Role has multilple policies 
+			Different Policies -------- will be created for each role
+		Then Role to be created and finally keep on adding policies as per need.
+		
+		
+	As account gets provisioned and 	
+		Repo : 
+			policy-mangement
+					create the policies 
+					---> IAM Policy > system or human policies > got to your folder [OEE] > and open oee-unscoped-devl file >  we write statements in it as per the operation (id, effect, action, resource) and decide scope and unscoped-devl
+								> scope - > decide the resource and apply permission on limited resources.
+								
+								
+			role-management
+				-- Go to your account name folder.
+					- > IAM role   > <ADFS_*> (role name)-> Human role  --> we attach policies in the file  <Base + Custom>
+															--- AD group created in sec.deere.com <AWS_*>
+															-- Tag so that no one out of the group of application is allowed to change
+																					::::: IT has to be regestered on mycloud.
+																					
+							
+
+AWS  login on deere 
+
+		mycloud.deere.com ----> you enter okta - --> returns SAML list ADS and AWS accounts- ----> which list all the account you are part of. 
+		
+							Root AWS --> OEE AWS 
+															
+															
+	
+
+	

@@ -1,0 +1,76 @@
+TS is buit on JS 
+TS --> Transpillation -->JS
+Statically Typed to resolve most of the bugs during compilation instead of running them and verifying it.
+
+
+
+
+
+
+
+
+
+
+Setting up TS env 
+		Install npm or yarn to install the TS globally
+		>>>>>>>>> yarn init -y  // Initialize the folder with yarn it---- will create a file with package.json with some details of your project.
+		>>>>>>>>> yarn add express body-parser dotenv // add some basic dependency to initialize the server app.--- will add dependencies in your package,json and add yarn.lock file and nodemodeules folder.
+		create a file myapp.ts // write the following code into the file -- will give you some as typescript is still not yet there
+								const bodyParser = require("body-parser");
+								const express = require("express");
+
+								const app = express();
+
+								app.use(bodyParser.json());
+								app.use(bodyParser.urlencoded({ extended: true }));
+
+								const PORT:string|number= process.env.PORT || 3000;
+
+								app.listen(PORT,()=>{
+								 console.log(`server is running on ${PORT}`);
+								});
+		>>>>>>>> yarn add typescript //  add dependency of TS -- will add it package.json and download the module in nodemodules
+		still some error in your file -- we need a package that offers type definitions for the Node.js runtime and its modules. Let's get that module into our development environment.
+		>>>>>>>> yarn add -D @types/node //  get that module into our development environment. --- will see that all the errors are gone
+
+Running the file
+		>>>>>>>> yarn tsc .\myapp.ts // tanscompile the file // will generate a js file out of it.
+		Now you can execute the js file using commnad
+		>>>>>> node .\myapp.js // run the file -- will see output of your file
+
+		But using the methode need two step first to transcompile and then run the js file. we can do it using a single command using ts-node
+		>>>>> yarn add ts-node // add the dev dependency of ts-code
+		>>>>> yarn ts-node .\myapp.ts // run the file ts directly using ts-code
+		
+		
+USing the TSConfig file
+		>> yarn tsc --init // to initiralize the TS config file -- will create a tsconfig.json file 
+		Remove the comments on this line inside tsconfig.json
+		>> "moduleResolution": "node10"
+		Modify the line "outDir": "./",
+		>> "outDir": "./build",
+		Add it to the end of the file
+				,
+			  "include": [
+				"myapp.ts"  
+			  ],
+			  "exclude": [
+				"node_modules"
+			  ]
+			  
+		You will notice node build/myapp.js. The reason for creating a file like that is, we configured our compiler by modifying the tsconfig.json file.
+		
+		
+		
+		
+		
+
+
+
+			5 [3, 4, 3,5, 6]
+			[]
+			
+			
+			
+			 
+
