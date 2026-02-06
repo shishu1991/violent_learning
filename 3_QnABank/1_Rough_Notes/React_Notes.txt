@@ -1,0 +1,274 @@
+Creating component library of advance common component
+Initialize git
+	>git init
+Initilize npm
+	>npm init -y
+Install react with TS enabled
+	>npm install -D react @types/react typescript
+
+NOTE: 	for creating library remove the react dependency from dev and add it to peer dependency 
+		 "peerDependencies": {
+			"react": "18.3.1"
+		  } 
+		in your pakage.json
+ 
+Install prettier
+	>npm install -D prettier
+	create a file .prettierrc to add prettier setting for the library and have the seetings as 
+
+	{
+	  "semi": true,
+	  "trailingComma": "es5",
+	  "singleQuote": true,
+	  "printWidth": 80,
+	  "tabWidth": 2,
+	  "useTabs": false,
+	  "bracketSpacing": true,
+	  "bracketSameLine": false,
+	  "arrowParens": "avoid",
+	  "endOfLine": "lf",
+	  "quoteProps": "as-needed",
+	  "jsxSingleQuote": true
+	}
+
+	To format the the project and files as per prettier add it to the script 
+	"format": "prettier --write --parser typescript '**/*.{ts,tsx}'"
+
+Install  ESLint with its plugin
+	For TS : npm install -D eslint @typescript-eslint/parser eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-storybook @typescript-eslint/eslint-plugin
+	For React: npm install -D eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks @markuplint/jsx-parser
+	
+		"eslint": "^9.39.2",
+		"@typescript-eslint/eslint-plugin": "^8.54.0",
+		"@typescript-eslint/parser": "^8.54.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-prettier": "^5.5.5",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^7.0.1",
+		"eslint-plugin-storybook": "^10.2.6"
+	
+	create a config file for ESLint named eslint.config.ts at the root of the project and paste the following configuration:
+		import js from '@eslint/js';
+		import globals from 'globals';
+
+		export default [
+		  js.configs.recommended,
+		  {
+			languageOptions: {
+			  ecmaVersion: 2022,
+			  sourceType: 'module',
+			  globals: {
+				...globals.browser,
+				...globals.node,
+				...globals.es2021,
+			  },
+			},
+			rules: {
+			  'no-unused-vars': 'warn',
+			  'no-console': 'warn',
+			  'prefer-const': 'error',
+			  'semi': ['error', 'always'],
+			  'quotes': ['error', 'single'],
+			},
+		  },
+		];
+	For linting the project, add the following script in package.json 
+		"lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix"
+		"lint": "eslint . --ext .js,.jsx"
+		
+Add gitignore file 
+	Create a .gitignore file in the root directory and add directories that we don’t have to include in the repository.
+		node_modules
+		dist
+
+		#storybook build directory
+		storybook-static
+		
+Typescript and Vite Configuration
+Vite, a modern front-end tool, has become popular in recent years. While it uses Rollup for production builds, it combines the strengths of both tools to offer a great development experience and efficient production builds.
+
+	Create a file named tsconfig.json and paste the following configuration:
+
+		{
+		  "compilerOptions": {
+			"target": "ES5", // Specifies the JavaScript version to target when transpiling code.
+			"useDefineForClassFields": true, // Enables the use of 'define' for class fields.
+			"lib": ["ES2020", "DOM", "DOM.Iterable"], // Specifies the libraries available for the code.
+			"module": "ESNext", // Defines the module system to use for code generation.
+			"skipLibCheck": true, // Skips type checking of declaration files.
+
+			/* Bundler mode */
+			"moduleResolution": "bundler", // Specifies how modules are resolved when bundling.
+			"allowImportingTsExtensions": true, // Allows importing TypeScript files with extensions.
+			"resolveJsonModule": true, // Enables importing JSON modules.
+			"isolatedModules": true, // Ensures each file is treated as a separate module.
+			"noEmit": true, // Prevents TypeScript from emitting output files.
+			"jsx": "react-jsx", // Configures JSX support for React.
+
+			/* Linting */
+			"strict": true, // Enables strict type checking.
+			"noUnusedLocals": true, // Flags unused local variables.
+			"noUnusedParameters": true, // Flags unused function parameters.
+			"noFallthroughCasesInSwitch": true, // Requires handling all cases in a switch statement.
+			"declaration": true, // Generates declaration files for TypeScript.
+		  },
+		  "include": ["src"], // Specifies the directory to include when searching for TypeScript files.
+		  "exclude": [
+			"src/**/__docs__","src/**/__test__"
+		  ]
+		}
+	
+	
+	To install Vite with one plugin that generates a declaration file
+	 
+		> npm install -D vite vite-plugin-dts
+	
+	Create a file named vite.config.js in the root directory with the following configuration:
+		import { defineConfig } from "vite";
+		import dts from "vite-plugin-dts";
+		import { peerDependencies } from "./package.json";
+
+		export default defineConfig({
+		  build: {
+			lib: {
+			  entry: "./src/index.ts", // Specifies the entry point for building the library.
+			  name: "vite-react-ts-button", // Sets the name of the generated library.
+			  fileName: (format) => `index.${format}.js`, // Generates the output file name based on the format.
+			  formats: ["cjs", "es"], // Specifies the output formats (CommonJS and ES modules).
+			},
+			rollupOptions: {
+			  external: [...Object.keys(peerDependencies)], // Defines external dependencies for Rollup bundling.
+			},
+			sourcemap: true, // Generates source maps for debugging.
+			emptyOutDir: true, // Clears the output directory before building.
+		  },
+		  plugins: [dts()], // Uses the 'vite-plugin-dts' plugin for generating TypeScript declaration files (d.ts).
+		});
+		
+	Add this configuration to package.json as it defines the entry points and types definitions with the build script.
+
+		{
+		  ...
+		  "type": "module",
+		  "main": "dist/index.cjs.js",
+		  "module": "dist/index.es.js",
+		  "types": "dist/index.d.ts",
+		  "files": [
+			"/dist"
+		  ],
+		  "scripts":{
+		   ...
+		   "build": "tsc && vite build",
+		  }
+		}
+		
+		
+		
+---- Unit Testing with Vitest and React-Testing-Library 
+
+	To install Vitest, run the following command:
+
+		> npm install -D vitest @testing-library/react jsdom @testing-library/jest-dom
+		
+	Now, add the following script to thepackage.json file.
+
+		"scripts": {
+		  "test": "vitest run",
+		  "test-watch": "vitest",
+		  "test:ui": "vitest --ui"
+		}
+	Add the following line at the top of the vite.config.ts file:
+
+		/// <reference types="vitest" />
+		
+	Create a file namedsetupTests.ts in the root directory and add the following code to that file:
+
+		import { expect } from "vitest";
+		import * as matchers from "@testing-library/jest-dom/matchers";
+		import { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
+		declare module "vitest" {
+		  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+		  interface Assertion<T = any>
+			extends jest.Matchers<void, T>,
+			  TestingLibraryMatchers<T, void> {}
+		}
+		expect.extend(matchers);
+		
+	Now, add the following configuration to vite.config.ts file under defineConfig:
+
+		  test: {
+			globals: true,
+			environment: "jsdom",
+			setupFiles: "./setupTests.ts",
+		  },
+	
+	Create __test__ directory in the accordion folder and add a file named ManufacturingAccordion.test.tsx to test the component with the following code:
+		import { render, screen } from '@testing-library/react';
+		import { describe, expect, it } from 'vitest';
+		import ManufacturingAccordion from '../ManufacturingAccordion';
+		const mockProps = {
+			title: 'Test Accordion',
+			description: 'This is a test description for the accordion.',
+			isCollapsed: false,
+		};
+		describe('Accordion component', () => {
+		  it('Accordion should render correctly', () => {
+			render(<ManufacturingAccordion {...mockProps} />);
+			const accordion = screen.getByRole('button');
+			expect(accordion).toBeInTheDocument();
+		  });
+		});
+		
+
+
+Add husky for pre commit hook
+	To configure Husky with pre-commit hooks, run the following commands:
+
+		> npm install -D husky lint-staged
+
+
+Add story Book optional
+
+
+Build the project using 
+> npm run build 
+> npm init 
+	give pakage detaisl name 
+once pakage is ready change the main and module file 
+
+
+Go to your new project where you want to import
+ > npm i C:\Users\RHMBK94\My_World\Work\1_ADVANCE\repo-ui\mfg-advance-ui-components 
+ 
+It will available to you for usage.
+
+	
+
+
+
+
+React app manually 
+
+> initialize git > git init
+> initalize npm > npm init -y
+> initilizae react react dom  > npm install -D react @types/react react-dom
+> install prettier >npm install -D prettier |  config .prettierrc  add config | add format script
+> install lint > npm install -D eslint eslint-config-prettier eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks @markuplint/jsx-parser | config lint eslint.config.js  add config > add script 
+> add gitignore | update with files to be ignored
+> install vite > npm install -D vite vite-plugin-dts | config vite.config.js and update with details for the build | add script to build and run
+> install other dependecies > npm install --save-dev  @babel/core @babel/preset-env @babel/preset-react babel-loader css-loader style-loader
+> create folder public  inside it index.html will have entry to main.jsxand src with 2 files App.jsx will have the component  and main.jsx will have logic to create roo and render it on index.html.
+> install  npm install -D @vitejs/plugin-react
+> update the vite.config with following 
+	import { defineConfig } from 'vite';
+	import react from '@vitejs/plugin-react';
+
+	export default defineConfig({
+	  plugins: [react()],
+	  server: {
+		open: '/index.html',
+	  },
+	});
+	
+	
+	npm i @deere/fuel-react@stable @mui/material@7
